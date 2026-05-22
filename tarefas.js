@@ -71,6 +71,7 @@ function mudarSituacao(idLinha){
     if(celulaSituacao.textContent === "A fazer"){
         celulaSituacao.textContent = "Concluído";
 
+
     } else {
         celulaSituacao.textContent = "A fazer";
 
@@ -84,7 +85,6 @@ function editarTarefa(idLinha){
     // pega os valores atuais
     var nome = linha.cells[1].textContent;
     var data = linha.cells[2].textContent;
-    var situacao = linha.cells[3].textContent;
 
     // transforma em inputs
     linha.cells[1].innerHTML =
@@ -93,15 +93,6 @@ function editarTarefa(idLinha){
     linha.cells[2].innerHTML =
         `<input type="date" id="editData" value="${data}">`;
 
-    linha.cells[3].innerHTML =
-        `<select id="editSituacao">
-            <option ${situacao === "A fazer" ? "selected" : ""}>
-                A fazer
-            </option>
-            <option ${situacao === "Concluído" ? "selected" : ""}>
-                Concluído
-            </option>
-        </select>`;
 
     // muda o botão para salvar
     linha.cells[6].innerHTML =
@@ -117,11 +108,9 @@ function salvarEdicao(idLinha){
     // pega os novos valores
     var novoNome = document.getElementById("editNome").value;
     var novaData = document.getElementById("editData").value;
-    var novaSituacao = document.getElementById("editSituacao").value;
 
     linha.cells[1].textContent = novoNome;
     linha.cells[2].textContent = novaData;
-    linha.cells[3].textContent = novaSituacao;
 
 
 
